@@ -1,0 +1,147 @@
+.contact {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: #0f0f10;
+  color: #fff;
+  padding: 6rem 2rem;
+}
+
+.contact h2 {
+  font-size: 2.3rem;
+  font-weight: 700;
+  color: #00ff88;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.contact h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: #00ff88;
+  margin: 0.5rem auto 0;
+  border-radius: 3px;
+}
+
+.contact p {
+  font-size: 1.2rem;
+  color: #ccc;
+  max-width: 600px;
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+/* Container dos botões */
+.contact-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+/* Botão base */
+.contact .btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.9rem 2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #fff;
+  background: transparent;
+  border: 2px solid #00ff88;
+  overflow: hidden;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  z-index: 0;
+}
+
+/* Fundo animado do botão */
+.contact .btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #00ff88;
+  width: 0%;
+  transition: width 0.4s ease;
+  border-radius: 50px;
+  z-index: -1; /* 🔥 Mantém o fundo atrás do conteúdo */
+}
+
+/* Garante que ícone e texto fiquem visíveis sempre */
+.contact .btn span,
+.contact .btn svg {
+  position: relative;
+  z-index: 1;
+}
+
+/* Hover: anima fundo */
+.contact .btn:hover::before {
+  width: 100%;
+}
+
+.contact .btn:hover {
+  color: #111;
+}
+
+/* --- Botões temáticos --- */
+.btn.github {
+  border-color: #333;
+}
+
+.btn.github::before {
+  background: #333;
+}
+
+.btn.github:hover {
+  color: #fff;
+}
+
+.btn.linkedin {
+  border-color: #0077b5;
+}
+
+.btn.linkedin::before {
+  background: #0077b5;
+}
+
+.btn.linkedin:hover {
+  color: #fff;
+}
+
+.btn.instagram {
+  border-color: #FC08A9;
+}
+
+.btn.instagram::before {
+  background: #FC08A9;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .contact h2 {
+    font-size: 1.8rem;
+  }
+
+  .contact p {
+    font-size: 1rem;
+  }
+
+  .contact-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact .btn {
+    width: 100%;
+    max-width: 250px;
+  }
+}

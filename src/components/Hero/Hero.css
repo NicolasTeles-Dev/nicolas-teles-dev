@@ -1,0 +1,107 @@
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  padding: 6rem 2rem;
+}
+
+.userPhoto {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 3px solid #00ff88;
+  object-fit: cover;
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.userPhoto:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 35px #00ff88;
+}
+
+.hero h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.hero h2 span {
+  color: #00ff88;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: #ccc;
+  max-width: 600px;
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+/* Espaço entre os ícones e o botão */
+.Skillsicons {
+  margin-bottom: 2.5rem;
+}
+
+.Skillsicons img {
+  max-width: 90%;
+}
+
+/* Botão com efeito de preenchimento */
+.hero .btn {
+  position: relative;
+  display: inline-block;
+  padding: 0.9rem 2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #fff;
+  background: transparent;
+  border: 2px solid #00ff88;
+  overflow: hidden;
+  transition: color 0.3s ease;
+}
+
+.hero .btn::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0%;
+  height: 100%;
+  background: #00ff88;
+  z-index: 0;
+  transition: width 0.4s ease;
+}
+
+.hero .btn:hover::before {
+  width: 100%;
+}
+
+.hero .btn span {
+  position: relative;
+  z-index: 1;
+}
+
+.hero .btn:hover {
+  color: #111; /* Contraste com o preenchimento verde */
+}
+
+@media (max-width: 600px) {
+  .hero h2 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .userPhoto {
+    width: 110px;
+    height: 110px;
+  }
+}
