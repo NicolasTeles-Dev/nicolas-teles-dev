@@ -21,7 +21,7 @@ export default function Projects() {
     },
     {
       title: "DB-Assistente",
-      desc: "App Flutter de lista de compras compartilháveis.",
+      desc: "Assistente Virtual com IA integrada que entende e fala com você",
       img: "/img/db.jpg",
       stacks: "flutter,dart,python",
     },
@@ -36,7 +36,8 @@ export default function Projects() {
       desc: "App que contém conteúdos dos jogos da Valve Half-Life 1 e 2, e suas DLC's",
       img: "/img/half.png",
       stacks: "flutter,dart,python,docker",
-    },    {
+    },
+    {
       title: "AgroSoy",
       desc: "Meu primeiro site, uma dashboard feita para verificar a produção de soja do Brasil",
       img: "/img/agro.png",
