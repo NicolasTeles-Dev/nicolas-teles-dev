@@ -1,19 +1,21 @@
 .contact {
+  width: 100%;
+  max-width: none;
   min-height: 70vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: #0f0f10;
-  color: #fff;
+  background: var(--dark-background);
+  color: var(--on-dark);
   padding: 6rem 2rem;
 }
 
 .contact h2 {
-  font-size: 2.3rem;
+  font-size: clamp(1.8rem, 7vw, 2.3rem);
   font-weight: 700;
-  color: #00ff88;
+  color: var(--on-dark);
   margin-bottom: 1.5rem;
   position: relative;
 }
@@ -23,14 +25,14 @@
   display: block;
   width: 60px;
   height: 3px;
-  background: #00ff88;
+  background: var(--mist);
   margin: 0.5rem auto 0;
   border-radius: 3px;
 }
 
 .contact p {
-  font-size: 1.2rem;
-  color: #ccc;
+  font-size: clamp(1rem, 3.8vw, 1.2rem);
+  color: var(--mist);
   max-width: 600px;
   margin-bottom: 2.5rem;
   line-height: 1.6;
@@ -55,11 +57,12 @@
   border-radius: 50px;
   font-weight: 600;
   text-decoration: none;
-  color: #fff;
+  color: var(--on-dark);
   background: transparent;
-  border: 2px solid #00ff88;
+  border: 2px solid var(--mist);
   overflow: hidden;
   cursor: pointer;
+  isolation: isolate;
   transition: color 0.3s ease;
   z-index: 0;
 }
@@ -69,11 +72,12 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: #00ff88;
-  width: 0%;
-  transition: width 0.4s ease;
+  background: var(--mist);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
   border-radius: 50px;
-  z-index: -1; /* 🔥 Mantém o fundo atrás do conteúdo */
+  z-index: 0;
 }
 
 /* Garante que ícone e texto fiquem visíveis sempre */
@@ -85,44 +89,56 @@
 
 /* Hover: anima fundo */
 .contact .btn:hover::before {
-  width: 100%;
+  transform: scaleX(1);
 }
 
 .contact .btn:hover {
-  color: #111;
+  background: var(--mist);
+  border-color: var(--mist);
+  color: var(--dark-background);
 }
 
 /* --- Botões temáticos --- */
 .btn.github {
-  border-color: #333;
+  border-color: var(--steel);
 }
 
 .btn.github::before {
-  background: #333;
+  background: var(--steel);
 }
 
 .btn.github:hover {
-  color: #fff;
+  background: var(--steel);
+  border-color: var(--steel);
+  color: var(--on-dark);
 }
 
 .btn.linkedin {
-  border-color: #0077b5;
+  border-color: var(--mist);
 }
 
 .btn.linkedin::before {
-  background: #0077b5;
+  background: var(--mist);
 }
 
 .btn.linkedin:hover {
-  color: #fff;
+  background: var(--mist);
+  border-color: var(--mist);
+  color: var(--dark-background);
 }
 
 .btn.instagram {
-  border-color: #FC08A9;
+  border-color: var(--on-dark);
 }
 
 .btn.instagram::before {
-  background: #FC08A9;
+  background: var(--on-dark);
+}
+
+.btn.instagram:hover {
+  background: var(--on-dark);
+  border-color: var(--on-dark);
+  color: var(--dark-background);
 }
 
 /* Responsivo */
