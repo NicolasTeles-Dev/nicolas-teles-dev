@@ -1,13 +1,47 @@
 .about {
+  position: relative;
+  width: 100%;
+  max-width: none;
+  margin: 0;
   color: var(--deep);
   padding: clamp(5rem, 14vw, 14rem) clamp(1.25rem, 5vw, 2rem);
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: transparent;
+}
+
+.about::before,
+.about::after {
+  content: none;
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.about::before {
+  inset: 0;
+  opacity: 0.34;
+  background-image:
+    linear-gradient(90deg, transparent 49.8%, color-mix(in srgb, var(--steel) 35%, transparent) 50%, transparent 50.2%),
+    linear-gradient(0deg, transparent 49.8%, color-mix(in srgb, var(--steel) 22%, transparent) 50%, transparent 50.2%);
+  background-size: 8rem 8rem;
+}
+
+.about::after {
+  width: 20rem;
+  height: 20rem;
+  right: -8rem;
+  bottom: -10rem;
+  border: 1px solid color-mix(in srgb, var(--steel) 45%, transparent);
+  transform: rotate(45deg);
+  box-shadow: 0 0 0 4rem color-mix(in srgb, var(--mist) 7%, transparent);
 }
 
 .about h2 {
+  width: 100%;
+  max-width: 900px;
   font-size: 2.3rem;
   font-weight: 700;
   color: var(--deep);

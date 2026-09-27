@@ -1,6 +1,10 @@
 .footer {
+    position: relative;
+    width: 100%;
     color: var(--mist);
     text-align: center;
     padding: 2rem;
-    background: var(--footer-background);
+    overflow: hidden;
+    background: color-mix(in srgb, var(--footer-background) 88%, transparent);
+    backdrop-filter: blur(0.5rem);
 }

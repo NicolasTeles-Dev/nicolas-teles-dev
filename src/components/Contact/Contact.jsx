@@ -9,17 +9,20 @@ import {
   FaVoicemail,
 } from "react-icons/fa";
 
-export default function Contact() {
+export default function Contact({ language }) {
+  const copy = language === 'pt'
+    ? { title: 'Contato', subtitle: 'Quer conversar sobre um projeto? Me chame!', email: 'Enviar e-mail' }
+    : { title: 'Contact', subtitle: 'Would you like to talk about a project? Get in touch!', email: 'Send email' }
   return (
     <section id="contact" className="contact">
-      <h2>Contato</h2>
-      <p>Quer conversar sobre um projeto? Me chame!</p>
+      <h2>{copy.title}</h2>
+      <p>{copy.subtitle}</p>
 
       <div className="contact-buttons">
         <a href="mailto:nicolas.gpteles@gmail.com">
           <button className="btn">
             <FaGoogle />
-            <span>Enviar e-mail</span>
+            <span>{copy.email}</span>
           </button>
         </a>
 

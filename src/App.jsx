@@ -17,6 +17,7 @@ function App() {
 
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
   })
+  const [language, setLanguage] = useState('en')
   const MotionMain = motion.main
 
   useEffect(() => {
@@ -24,22 +25,29 @@ function App() {
     localStorage.setItem('theme', theme)
   }, [theme])
 
+  useEffect(() => {
+    document.documentElement.lang = language === 'pt' ? 'pt-BR' : 'en'
+  }, [language])
+
   return (
     <>
       <Navbar
         theme={theme}
         onToggleTheme={() => setTheme((currentTheme) => currentTheme === 'light' ? 'dark' : 'light')}
+        language={language}
+        onToggleLanguage={() => setLanguage((currentLanguage) => currentLanguage === 'pt' ? 'en' : 'pt')}
       />
       <MotionMain
+        className="site-main"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-      <Hero />
-      <About />
-      <Projects />
-      <Contact />
-      <Footer />
+      <Hero language={language} />
+      <About language={language} />
+      <Projects language={language} />
+      <Contact language={language} />
+      <Footer language={language} />
       <ScrollToTop />
       </MotionMain>
     </>

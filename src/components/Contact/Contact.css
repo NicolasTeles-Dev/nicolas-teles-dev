@@ -1,4 +1,5 @@
 .contact {
+  position: relative;
   width: 100%;
   max-width: none;
   min-height: 70vh;
@@ -10,12 +11,41 @@
   background: var(--dark-background);
   color: var(--on-dark);
   padding: 6rem 2rem;
+  background: transparent;
+  color: var(--deep);
+}
+
+.contact::before,
+.contact::after {
+  content: none;
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.contact::before {
+  inset: 0;
+  opacity: 0.34;
+  background-image:
+    linear-gradient(90deg, transparent 49.85%, rgba(142, 178, 216, 0.35) 50%, transparent 50.15%),
+    linear-gradient(0deg, transparent 49.85%, rgba(142, 178, 216, 0.22) 50%, transparent 50.15%);
+  background-size: 7.5rem 7.5rem;
+}
+
+.contact::after {
+  width: 17rem;
+  height: 17rem;
+  top: -10rem;
+  right: 9%;
+  border: 1px solid rgba(142, 178, 216, 0.55);
+  transform: rotate(45deg);
+  box-shadow: 0 0 0 3.5rem rgba(142, 178, 216, 0.05);
 }
 
 .contact h2 {
   font-size: clamp(1.8rem, 7vw, 2.3rem);
   font-weight: 700;
-  color: var(--on-dark);
+  color: var(--deep);
   margin-bottom: 1.5rem;
   position: relative;
 }
@@ -32,7 +62,7 @@
 
 .contact p {
   font-size: clamp(1rem, 3.8vw, 1.2rem);
-  color: var(--mist);
+  color: var(--steel);
   max-width: 600px;
   margin-bottom: 2.5rem;
   line-height: 1.6;
@@ -57,7 +87,7 @@
   border-radius: 50px;
   font-weight: 600;
   text-decoration: none;
-  color: var(--on-dark);
+  color: var(--deep);
   background: transparent;
   border: 2px solid var(--mist);
   overflow: hidden;
@@ -95,7 +125,7 @@
 .contact .btn:hover {
   background: var(--mist);
   border-color: var(--mist);
-  color: var(--dark-background);
+  color: var(--foam);
 }
 
 /* --- Botões temáticos --- */
@@ -110,7 +140,7 @@
 .btn.github:hover {
   background: var(--steel);
   border-color: var(--steel);
-  color: var(--on-dark);
+  color: var(--foam);
 }
 
 .btn.linkedin {
@@ -124,7 +154,7 @@
 .btn.linkedin:hover {
   background: var(--mist);
   border-color: var(--mist);
-  color: var(--dark-background);
+  color: var(--foam);
 }
 
 .btn.instagram {
@@ -138,7 +168,7 @@
 .btn.instagram:hover {
   background: var(--on-dark);
   border-color: var(--on-dark);
-  color: var(--dark-background);
+  color: var(--foam);
 }
 
 /* Responsivo */

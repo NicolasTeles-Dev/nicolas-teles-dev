@@ -1,22 +1,119 @@
 .hero {
+  position: relative;
+  width: 100%;
+  max-width: none;
+  margin: 0;
   min-height: calc(100svh - 78px);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--deep);
   padding: 5rem 2rem;
+  background: transparent;
+}
+
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  display: none;
+}
+
+.hero::before {
+  inset: 0;
+  opacity: 0.52;
+  background-image:
+    linear-gradient(90deg, transparent 49.85%, color-mix(in srgb, var(--steel) 36%, transparent) 50%, transparent 50.15%),
+    linear-gradient(0deg, transparent 49.85%, color-mix(in srgb, var(--steel) 25%, transparent) 50%, transparent 50.15%);
+  background-size: 9rem 9rem;
+  mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent);
+}
+
+.hero::after {
+  width: min(36rem, 56vw);
+  aspect-ratio: 1;
+  right: -14rem;
+  top: -16rem;
+  border: 1px solid color-mix(in srgb, var(--steel) 50%, transparent);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4rem color-mix(in srgb, var(--mist) 8%, transparent), 0 0 0 8rem color-mix(in srgb, var(--mist) 5%, transparent);
 }
 
 .hero-content {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(19rem, 0.8fr);
   align-items: center;
   gap: clamp(3rem, 8vw, 6rem);
   width: 100%;
+  max-width: 900px;
 }
 
 .hero-intro {
   text-align: left;
+}
+
+.hero-tech-art {
+  display: none;
+}
+
+.hero-orbit,
+.hero-diamond,
+.hero-code {
+  position: absolute;
+  color: color-mix(in srgb, var(--steel) 62%, transparent);
+}
+
+.hero-orbit {
+  border: 1px solid color-mix(in srgb, var(--steel) 54%, transparent);
+  border-radius: 50%;
+}
+
+.hero-orbit-one {
+  width: 22rem;
+  height: 22rem;
+  right: 4%;
+  bottom: -13rem;
+}
+
+.hero-orbit-two {
+  width: 9rem;
+  height: 9rem;
+  right: 12%;
+  bottom: 3rem;
+  border-style: dashed;
+}
+
+.hero-diamond {
+  width: 5.5rem;
+  height: 5.5rem;
+  border: 1px solid color-mix(in srgb, var(--steel) 60%, transparent);
+  transform: rotate(45deg);
+}
+
+.hero-diamond-one {
+  top: 16%;
+  right: 8%;
+}
+
+.hero-diamond-two {
+  width: 2.8rem;
+  height: 2.8rem;
+  top: calc(16% + 1.35rem);
+  right: calc(8% + 1.35rem);
+  border: 0;
+  background: color-mix(in srgb, var(--mist) 62%, transparent);
+  box-shadow: 0 0 1.8rem color-mix(in srgb, var(--mist) 45%, transparent);
+}
+
+.hero-code {
+  right: 8%;
+  bottom: 13%;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
 }
 
 .hero-eyebrow {
@@ -64,9 +161,11 @@
 .stack-showcase {
   min-width: 0;
   padding: 1.5rem;
-  border: 1px solid var(--border);
+  border: 1px solid color-mix(in srgb, var(--border) 80%, var(--mist));
   border-radius: 1.25rem;
-  background: var(--surface);
+  background: color-mix(in srgb, var(--surface) 78%, transparent);
+  box-shadow: 0 1.25rem 3rem color-mix(in srgb, var(--shadow) 68%, transparent);
+  backdrop-filter: blur(0.75rem);
   overflow: hidden;
 }
 
@@ -172,6 +271,25 @@
   .hero-content {
     grid-template-columns: 1fr;
     gap: 2.5rem;
+  }
+
+  .hero::before {
+    background-size: 6rem 6rem;
+  }
+
+  .hero-diamond-one {
+    top: 8%;
+    right: -1.75rem;
+  }
+
+  .hero-diamond-two,
+  .hero-code,
+  .hero-orbit-two {
+    display: none;
+  }
+
+  .hero-orbit-one {
+    right: -8rem;
   }
 
   .hero-intro {

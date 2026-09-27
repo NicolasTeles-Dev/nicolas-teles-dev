@@ -4,16 +4,20 @@ import { useEffect, useRef, useState } from "react";
 
 const Motion = motion;
 
-export default function Projects() {
+export default function Projects({ language }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
   const [activeProject, setActiveProject] = useState(0);
   const [selectedProject, setSelectedProject] = useState(null);
+  const copy = language === "pt"
+    ? { title: "Projetos", previous: "Ver projeto anterior", next: "Ver próximo projeto", select: "Selecionar projeto", details: "Ver detalhes", close: "Fechar detalhes do projeto", featured: "Projeto em destaque", technologies: "Tecnologias utilizadas em", github: "Ver no GitHub", display: "Exibir" }
+    : { title: "Projects", previous: "View previous project", next: "View next project", select: "Select project", details: "View details", close: "Close project details", featured: "Featured project", technologies: "Technologies used in", github: "View on GitHub", display: "Show" };
 
   const projects = [
     {
       title: "CodeBank",
       desc: "App de educação financeira gamificada.",
+      descEn: "Gamified financial education app.",
       img: "/img/codebank.png",
       stacks: "html,css,js,php,mysql,flutter,dart",
       github: "https://github.com/NicolasTeles-Dev",
@@ -21,6 +25,7 @@ export default function Projects() {
     {
       title: "Dashboard-Omil",
       desc: "Dashboard desenvolvido para empresa Omil, onde mostra as correções que devem ser realizadas na caldeira",
+      descEn: "Dashboard built for Omil showing the corrections needed for its boiler.",
       img: "/img/omil.png",
       stacks: "html,css,js,php,python",
       github: "https://github.com/NicolasTeles-Dev",
@@ -28,6 +33,7 @@ export default function Projects() {
     {
       title: "DB-Assistente",
       desc: "Assistente Virtual com IA integrada que entende e fala com você",
+      descEn: "Virtual assistant with integrated AI that understands and talks to you.",
       img: "/img/db.jpg",
       stacks: "flutter,dart,python",
       github: "https://github.com/NicolasTeles-Dev",
@@ -35,6 +41,7 @@ export default function Projects() {
     {
       title: "Visite Rio do Sul",
       desc: "LandingPage para fomentar o turismo rural de Rio do Sul, projeto feito para o Protalent com parceiria da prefeitura",
+      descEn: "Landing page promoting rural tourism in Rio do Sul, built for Protalent in partnership with the city hall.",
       img: "/img/visite.png",
       stacks: "laravel,php,tailwindcss",
       github: "https://github.com/NicolasTeles-Dev",
@@ -42,6 +49,7 @@ export default function Projects() {
     {
       title: "Half-Life Wiki",
       desc: "App que contém conteúdos dos jogos da Valve Half-Life 1 e 2, e suas DLC's",
+      descEn: "App featuring content from Valve's Half-Life 1 and 2 games and their DLCs.",
       img: "/img/half.png",
       stacks: "flutter,dart,python,docker",
       github: "https://github.com/NicolasTeles-Dev",
@@ -49,6 +57,7 @@ export default function Projects() {
     {
       title: "AgroSoy",
       desc: "Meu primeiro site, uma dashboard feita para verificar a produção de soja do Brasil",
+      descEn: "My first website, a dashboard created to track Brazil's soybean production.",
       img: "/img/agro.png",
       stacks: "html,css,js,php,python",
       github: "https://github.com/NicolasTeles-Dev",
@@ -89,14 +98,14 @@ export default function Projects() {
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
-      <h2>Projetos</h2>
+      <h2>{copy.title}</h2>
 
       <div className="projects-carousel" aria-roledescription="carrossel">
         <button
           className="carousel-control"
           type="button"
           onClick={showPreviousProject}
-          aria-label="Ver projeto anterior"
+          aria-label={copy.previous}
         >
           <span className="material-symbols-outlined" aria-hidden="true">chevron_left</span>
         </button>
@@ -130,9 +139,9 @@ export default function Projects() {
                 >
                   {p.img && <img src={p.img} alt={p.title} className="project-img" />}
                   <h3>{p.title}</h3>
-                  <p>{p.desc}</p>
+                  <p>{language === 'pt' ? p.desc : p.descEn}</p>
                   <span className="project-more">
-                    Ver detalhes
+                    {copy.details}
                     <span className="material-symbols-outlined" aria-hidden="true">open_in_new</span>
                   </span>
                 </Motion.article>
@@ -145,20 +154,20 @@ export default function Projects() {
           className="carousel-control"
           type="button"
           onClick={showNextProject}
-          aria-label="Ver próximo projeto"
+          aria-label={copy.next}
         >
           <span className="material-symbols-outlined" aria-hidden="true">chevron_right</span>
         </button>
       </div>
 
-      <div className="carousel-pagination" aria-label="Selecionar projeto">
+      <div className="carousel-pagination" aria-label={copy.select}>
         {projects.map((project, i) => (
           <button
             key={project.title}
             className={`carousel-dot ${i === activeProject ? "is-active" : ""}`}
             type="button"
             onClick={() => selectProject(i)}
-            aria-label={`Exibir ${project.title}`}
+            aria-label={`${copy.display} ${project.title}`}
             aria-current={i === activeProject ? "true" : undefined}
           />
         ))}
@@ -188,25 +197,25 @@ export default function Projects() {
                 className="modal-close"
                 type="button"
                 onClick={() => setSelectedProject(null)}
-                aria-label="Fechar detalhes do projeto"
+                aria-label={copy.close}
               >
                 <span className="material-symbols-outlined" aria-hidden="true">close</span>
               </button>
 
               <img src={projects[selectedProject].img} alt="" className="modal-image" />
               <div className="modal-content">
-                <p className="modal-label">Projeto em destaque</p>
+                <p className="modal-label">{copy.featured}</p>
                 <h3 id={`project-modal-${selectedProject}`}>{projects[selectedProject].title}</h3>
-                <p>{projects[selectedProject].desc}</p>
+                <p>{language === 'pt' ? projects[selectedProject].desc : projects[selectedProject].descEn}</p>
                 <img
                   className="stacks-img"
                   src={`https://skillicons.dev/icons?i=${projects[selectedProject].stacks}`}
-                  alt={`Tecnologias utilizadas em ${projects[selectedProject].title}`}
+                  alt={`${copy.technologies} ${projects[selectedProject].title}`}
                 />
                 <div className="modal-actions">
                   <a href={projects[selectedProject].github} target="_blank" rel="noreferrer">
                     <span className="material-symbols-outlined" aria-hidden="true">code</span>
-                    Ver no GitHub
+                    {copy.github}
                   </a>
                 </div>
               </div>
