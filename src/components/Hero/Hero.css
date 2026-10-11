@@ -140,13 +140,13 @@
   box-shadow: 0 0 35px var(--mist);
 }
 
-.hero h2 {
+.hero h1 {
   font-size: clamp(2rem, 7vw, 2.5rem);
   font-weight: 700;
   margin-bottom: 1rem;
 }
 
-.hero h2 span {
+.hero h1 span {
   color: var(--steel);
 }
 
@@ -180,15 +180,26 @@
 
 .stack-carousel {
   position: relative;
-  overflow: hidden;
+  overflow-x: auto;
+  cursor: grab;
+  scrollbar-width: none;
+  touch-action: pan-y;
   mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+
+.stack-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.stack-carousel.is-dragging {
+  cursor: grabbing;
+  user-select: none;
 }
 
 .stack-track {
   display: flex;
   gap: 0.85rem;
   width: max-content;
-  animation: stack-scroll 28s linear infinite;
 }
 
 .stack-item {
@@ -208,16 +219,6 @@
 .stack-item img {
   width: 3rem;
   height: 3rem;
-}
-
-@keyframes stack-scroll {
-  to {
-    transform: translateX(calc(-50% - 0.425rem));
-  }
-}
-
-.stack-carousel:hover .stack-track {
-  animation-play-state: paused;
 }
 
 /* Botão com efeito de preenchimento */
@@ -300,7 +301,7 @@
     font-size: 0.7rem;
   }
 
-  .hero h2 {
+  .hero h1 {
     font-size: 2rem;
   }
 
@@ -319,11 +320,5 @@
 
   .stack-item {
     min-width: 8.75rem;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .stack-track {
-    animation: none;
   }
 }

@@ -4,12 +4,19 @@ import { useState } from 'react'
 export default function Navbar({ theme, onToggleTheme, language, onToggleLanguage }) {
   const [open, setOpen] = useState(false)
   const copy = language === 'pt'
-    ? { home: 'Início', about: 'Sobre', projects: 'Projetos', contact: 'Contato', switchLanguage: 'Mudar idioma para inglês' }
-    : { home: 'Home', about: 'About', projects: 'Projects', contact: 'Contact', switchLanguage: 'Switch language to Portuguese' }
+    ? {
+        home: 'Início', about: 'Sobre', projects: 'Projetos', contact: 'Contato',
+        switchLanguage: 'Mudar idioma para inglês', enableDarkTheme: 'Ativar tema escuro', enableLightTheme: 'Ativar tema claro',
+      }
+    : {
+        home: 'Home', about: 'About', projects: 'Projects', contact: 'Contact',
+        switchLanguage: 'Switch language to Portuguese', enableDarkTheme: 'Enable dark theme', enableLightTheme: 'Enable light theme',
+      }
+  const themeLabel = theme === 'light' ? copy.enableDarkTheme : copy.enableLightTheme
 
   return (
     <nav className="navbar">
-      <h1 className="logo">Nicolas_Teles.dev</h1>
+      <div className="logo">Nicolas_Teles.dev</div>
 
       {/* Menu */}
       <ul id="main-navigation" className={open ? "nav-links open" : "nav-links"}>
@@ -24,8 +31,8 @@ export default function Navbar({ theme, onToggleTheme, language, onToggleLanguag
           type="button"
           className="theme-toggle"
           onClick={onToggleTheme}
-          aria-label={theme === 'light' ? 'Ativar tema escuro' : 'Ativar tema claro'}
-          title={theme === 'light' ? 'Ativar tema escuro' : 'Ativar tema claro'}
+          aria-label={themeLabel}
+          title={themeLabel}
         >
           <span className="material-symbols-outlined" aria-hidden="true">
             {theme === 'light' ? 'moon_stars' : 'wb_sunny'}
@@ -39,7 +46,7 @@ export default function Navbar({ theme, onToggleTheme, language, onToggleLanguag
           aria-label={copy.switchLanguage}
           title={copy.switchLanguage}
         >
-          <span className={`fi fi-${language === 'pt' ? 'us' : 'br'}`} aria-hidden="true" />
+          <span className={`fi fi-${language === 'pt' ? 'br' : 'us'}`} aria-hidden="true" />
         </button>
 
         <button

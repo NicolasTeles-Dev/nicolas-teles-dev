@@ -89,7 +89,7 @@
   text-decoration: none;
   color: var(--deep);
   background: transparent;
-  border: 2px solid var(--mist);
+  border: 2px solid var(--steel);
   overflow: hidden;
   cursor: pointer;
   isolation: isolate;
@@ -125,49 +125,6 @@
 .contact .btn:hover {
   background: var(--mist);
   border-color: var(--mist);
-  color: var(--foam);
-}
-
-/* --- Botões temáticos --- */
-.btn.github {
-  border-color: var(--steel);
-}
-
-.btn.github::before {
-  background: var(--steel);
-}
-
-.btn.github:hover {
-  background: var(--steel);
-  border-color: var(--steel);
-  color: var(--foam);
-}
-
-.btn.linkedin {
-  border-color: var(--mist);
-}
-
-.btn.linkedin::before {
-  background: var(--mist);
-}
-
-.btn.linkedin:hover {
-  background: var(--mist);
-  border-color: var(--mist);
-  color: var(--foam);
-}
-
-.btn.instagram {
-  border-color: var(--on-dark);
-}
-
-.btn.instagram::before {
-  background: var(--on-dark);
-}
-
-.btn.instagram:hover {
-  background: var(--on-dark);
-  border-color: var(--on-dark);
   color: var(--foam);
 }
 
